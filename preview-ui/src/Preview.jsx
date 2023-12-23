@@ -1,9 +1,6 @@
 import { Button } from '@/components/ui/button';
-import { Label } from '@/components/ui/label';
-import { Switch } from '@/components/ui/switch';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
-import { Input } from '@/components/ui/input';
-import { Separator } from '@/components/ui/separator';
+import { Switch } from '@/components/ui/switch';
 import { TooltipProvider, Tooltip, TooltipTrigger, TooltipContent } from '@/components/ui/tooltip';
 import React from 'react';
 
@@ -25,69 +22,40 @@ export default function FeatureFlagEditor() {
         </div>
         <Button variant="outline">Add description</Button>
       </div>
-      <div className="mb-6">
-        <h2 className="text-lg font-semibold mb-2">Enabled Environments</h2>
-        <div className="flex items-center space-x-4">
-          <Label htmlFor="integration">integration:</Label>
-          <Switch id="integration" />
-          <Label htmlFor="china">china:</Label>
-          <Switch id="china" />
-          <Label htmlFor="eu2">eu2:</Label>
-          <Switch id="eu2" />
-          <Label htmlFor="us2">us2:</Label>
-          <Switch id="us2" />
-          <Label htmlFor="cte3">cte3:</Label>
-          <Switch id="cte3" />
-        </div>
-      </div>
-      <div className="mb-6">
-        <Tabs defaultValue="rules" className="w-full">
-          <TabsList>
-            <TabsTrigger value="rules">Rules and Values</TabsTrigger>
-          </TabsList>
-          <TabsContent value="rules">
-            <div className="p-4 bg-gray-50 rounded-md">
-              <div className="flex justify-between items-center mb-4">
-                <h3 className="text-lg font-semibold">Live Revision</h3>
-                <Button variant="outline">Revision 1 live</Button>
-              </div>
-              <p className="text-sm mb-4">Changes you make below will start a new draft</p>
-              <div className="mb-4">
-                <h4 className="font-semibold mb-2">Default Value</h4>
-                <div className="flex items-center">
-                  <Button variant="outline">SERVE</Button>
-                  <span className="ml-2">OFF</span>
-                </div>
-              </div>
-              <div className="mb-4">
-                <h4 className="font-semibold mb-2">Override Rules</h4>
-                <div className="flex items-center space-x-2 mb-2">
-                  <Label htmlFor="integration-override">integration:</Label>
-                  <Input id="integration-override" className="w-12" />
-                  <Label htmlFor="china-override">china:</Label>
-                  <Input id="china-override" className="w-12" />
-                  <Label htmlFor="eu2-override">eu2:</Label>
-                  <Input id="eu2-override" className="w-12" />
-                  <Label htmlFor="us2-override">us2:</Label>
-                  <Input id="us2-override" className="w-12" />
-                  <Label htmlFor="cte3-override">cte3:</Label>
-                  <Input id="cte3-override" className="w-12" />
-                </div>
-                <p className="text-sm italic">No override rules for this environment yet</p>
-              </div>
-              <Separator />
-              <div className="mt-4">
-                <h4 className="font-semibold mb-2">Add Rules</h4>
-                <div className="flex space-x-4">
-                  <Button variant="outline">Add Forced Rule</Button>
-                  <Button variant="outline">Add Rollout Rule</Button>
-                  <Button variant="outline">Add Experiment Rule</Button>
-                </div>
-              </div>
-            </div>
-          </TabsContent>
-        </Tabs>
-      </div>
+      <Tabs defaultValue="integration" className="mb-6">
+        <TabsList>
+          <TabsTrigger value="integration">integration</TabsTrigger>
+          <TabsTrigger value="china">china</TabsTrigger>
+          <TabsTrigger value="eu2">eu2</TabsTrigger>
+          <TabsTrigger value="us2">us2</TabsTrigger>
+          <TabsTrigger value="cte3">cte3</TabsTrigger>
+        </TabsList>
+        <TabsContent value="integration">
+          <div className="p-4 bg-gray-50 rounded-md">
+            <Switch id="integration" />
+          </div>
+        </TabsContent>
+        <TabsContent value="china">
+          <div className="p-4 bg-gray-50 rounded-md">
+            <Switch id="china" />
+          </div>
+        </TabsContent>
+        <TabsContent value="eu2">
+          <div className="p-4 bg-gray-50 rounded-md">
+            <Switch id="eu2" />
+          </div>
+        </TabsContent>
+        <TabsContent value="us2">
+          <div className="p-4 bg-gray-50 rounded-md">
+            <Switch id="us2" />
+          </div>
+        </TabsContent>
+        <TabsContent value="cte3">
+          <div className="p-4 bg-gray-50 rounded-md">
+            <Switch id="cte3" />
+          </div>
+        </TabsContent>
+      </Tabs>
       <TooltipProvider>
         <Tooltip>
           <TooltipTrigger>
