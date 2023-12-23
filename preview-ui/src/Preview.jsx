@@ -1,6 +1,6 @@
 import { Button } from '@/components/ui/button';
-import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
 import { Switch } from '@/components/ui/switch';
+import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
 import { TooltipProvider, Tooltip, TooltipTrigger, TooltipContent } from '@/components/ui/tooltip';
 import React from 'react';
 
@@ -22,40 +22,53 @@ export default function FeatureFlagEditor() {
         </div>
         <Button variant="outline">Add description</Button>
       </div>
-      <Tabs defaultValue="integration" className="mb-6">
-        <TabsList>
-          <TabsTrigger value="integration">integration</TabsTrigger>
-          <TabsTrigger value="china">china</TabsTrigger>
-          <TabsTrigger value="eu2">eu2</TabsTrigger>
-          <TabsTrigger value="us2">us2</TabsTrigger>
-          <TabsTrigger value="cte3">cte3</TabsTrigger>
-        </TabsList>
-        <TabsContent value="integration">
-          <div className="p-4 bg-gray-50 rounded-md">
-            <Switch id="integration" />
-          </div>
-        </TabsContent>
-        <TabsContent value="china">
-          <div className="p-4 bg-gray-50 rounded-md">
-            <Switch id="china" />
-          </div>
-        </TabsContent>
-        <TabsContent value="eu2">
-          <div className="p-4 bg-gray-50 rounded-md">
-            <Switch id="eu2" />
-          </div>
-        </TabsContent>
-        <TabsContent value="us2">
-          <div className="p-4 bg-gray-50 rounded-md">
-            <Switch id="us2" />
-          </div>
-        </TabsContent>
-        <TabsContent value="cte3">
-          <div className="p-4 bg-gray-50 rounded-md">
-            <Switch id="cte3" />
-          </div>
-        </TabsContent>
-      </Tabs>
+      <div className="mb-6">
+        <h2 className="text-lg font-semibold mb-2">Enabled Environments</h2>
+        <div className="flex gap-4">
+          <Switch id="integration" />
+          <Switch id="china" />
+          <Switch id="eu2" />
+          <Switch id="us2" />
+          <Switch id="cte3" />
+        </div>
+      </div>
+      <div className="mb-6">
+        <h2 className="text-lg font-semibold mb-2">Override Rules</h2>
+        <Tabs defaultValue="integration" className="mb-6">
+          <TabsList>
+            <TabsTrigger value="integration">integration</TabsTrigger>
+            <TabsTrigger value="china">china</TabsTrigger>
+            <TabsTrigger value="eu2">eu2</TabsTrigger>
+            <TabsTrigger value="us2">us2</TabsTrigger>
+            <TabsTrigger value="cte3">cte3</TabsTrigger>
+          </TabsList>
+          <TabsContent value="integration">
+            <div className="p-4 bg-gray-50 rounded-md">
+              No override rules for this environment yet.
+            </div>
+          </TabsContent>
+          <TabsContent value="china">
+            <div className="p-4 bg-gray-50 rounded-md">
+              No override rules for this environment yet.
+            </div>
+          </TabsContent>
+          <TabsContent value="eu2">
+            <div className="p-4 bg-gray-50 rounded-md">
+              No override rules for this environment yet.
+            </div>
+          </TabsContent>
+          <TabsContent value="us2">
+            <div className="p-4 bg-gray-50 rounded-md">
+              No override rules for this environment yet.
+            </div>
+          </TabsContent>
+          <TabsContent value="cte3">
+            <div className="p-4 bg-gray-50 rounded-md">
+              No override rules for this environment yet.
+            </div>
+          </TabsContent>
+        </Tabs>
+      </div>
       <TooltipProvider>
         <Tooltip>
           <TooltipTrigger>
