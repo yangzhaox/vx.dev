@@ -29,25 +29,27 @@ export default function FeatureFlagForm() {
         </div>
         <fieldset className="mb-4">
           <legend className="block mb-2">Enabled Environments</legend>
-          <div className="flex items-center mb-2">
-            <Switch id="integration" />
-            <Label htmlFor="integration" className="ml-2">integration</Label>
-          </div>
-          <div className="flex items-center mb-2">
-            <Switch id="china" />
-            <Label htmlFor="china" className="ml-2">china</Label>
-          </div>
-          <div className="flex items-center mb-2">
-            <Switch id="eu2" />
-            <Label htmlFor="eu2" className="ml-2">eu2</Label>
-          </div>
-          <div className="flex items-center mb-2">
-            <Switch id="us2" />
-            <Label htmlFor="us2" className="ml-2">us2</Label>
-          </div>
-          <div className="flex items-center mb-2">
-            <Switch id="cte3" />
-            <Label htmlFor="cte3" className="ml-2">cte3</Label>
+          <div className="flex justify-between">
+            <div className="flex items-center">
+              <Switch id="integration" />
+              <Label htmlFor="integration" className="ml-2">integration</Label>
+            </div>
+            <div className="flex items-center">
+              <Switch id="china" />
+              <Label htmlFor="china" className="ml-2">china</Label>
+            </div>
+            <div className="flex items-center">
+              <Switch id="eu2" />
+              <Label htmlFor="eu2" className="ml-2">eu2</Label>
+            </div>
+            <div className="flex items-center">
+              <Switch id="us" />
+              <Label htmlFor="us" className="ml-2">us</Label>
+            </div>
+            <div className="flex items-center">
+              <Switch id="cte3" />
+              <Label htmlFor="cte3" className="ml-2">cte3</Label>
+            </div>
           </div>
         </fieldset>
         <div className="mb-6">
