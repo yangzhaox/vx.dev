@@ -24,7 +24,6 @@ const FeatureFlagForm = () => {
   const addVariant = () => {
     const newVariant = { name: '', value: '' };
     setVariants([...variants, newVariant]);
-    setDefaultVariant(newVariant.name);
   };
 
   const removeVariant = (index) => {
@@ -96,7 +95,7 @@ const FeatureFlagForm = () => {
             </SelectTrigger>
             <SelectContent>
               {variants.map((variant, index) => (
-                <SelectItem key={index} value={variant.name} onSelect={() => setDefaultVariant(variant.name)}>
+                <SelectItem key={index} value={variant.name || `variant-${index}`} onSelect={() => setDefaultVariant(variant.name)}>
                   {variant.name || 'Unnamed Variant'}
                 </SelectItem>
               ))}
