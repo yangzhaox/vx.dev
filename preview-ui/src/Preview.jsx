@@ -1,6 +1,7 @@
 import { Input } from '@/components/ui/input';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Button } from '@/components/ui/button';
+import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from '@/components/ui/select';
 import { Textarea } from '@/components/ui/textarea';
 import React from 'react';
 
@@ -8,6 +9,7 @@ const FeatureFlagForm = () => {
   const [flagKey, setFlagKey] = React.useState('');
   const [state, setState] = React.useState(false);
   const [variants, setVariants] = React.useState([{ name: '', value: '' }]);
+  const [defaultVariant, setDefaultVariant] = React.useState('');
 
   const handleVariantChange = (index, key, value) => {
     const newVariants = variants.map((variant, i) => {
@@ -20,11 +22,17 @@ const FeatureFlagForm = () => {
   };
 
   const addVariant = () => {
-    setVariants([...variants, { name: '', value: '' }]);
+    const newVariant = { name: '', value: '' };
+    setVariants([...variants, newVariant]);
+    setDefaultVariant(newVariant.name);
   };
 
   const removeVariant = (index) => {
-    setVariants(variants.filter((_, i) => i !== index));
+    const newVariants = variants.filter((_, i) => i !== index);
+    setVariants(newVariants);
+    if (defaultVariant === variants[index].name) {
+      setDefaultVariant(newVariants[0]?.name || '');
+    }
   };
 
   const generateJSON = () => {
@@ -37,9 +45,16 @@ const FeatureFlagForm = () => {
         }
         return acc;
       }, {}),
+      defaultVariant,
     };
     return JSON.stringify(json, null, 2);
   };
+
+  React.useEffect(() => {
+    if (variants.length > 0 && !variants.some(variant => variant.name === defaultVariant)) {
+      setDefaultVariant(variants[0].name);
+    }
+  }, [variants, defaultVariant]);
 
   return (
     <div className="flex h-screen bg-gray-100">
@@ -72,6 +87,21 @@ const FeatureFlagForm = () => {
             </div>
           ))}
           <Button variant="outline" onClick={addVariant}>Add Variant</Button>
+        </div>
+        <div className="mb-4">
+          <label htmlFor="defaultVariant" className="block mb-2">Default Variant</label>
+          <Select>
+            <SelectTrigger className="w-full">
+              <SelectValue placeholder="Select default variant" />
+            </SelectTrigger>
+            <SelectContent>
+              {variants.map((variant, index) => (
+                <SelectItem key={index} value={variant.name} onSelect={() => setDefaultVariant(variant.name)}>
+                  {variant.name || 'Unnamed Variant'}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
         </div>
       </div>
       <div className="w-1/2 p-6">
