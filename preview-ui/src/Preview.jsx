@@ -95,9 +95,11 @@ const FeatureFlagForm = () => {
             </SelectTrigger>
             <SelectContent>
               {variants.map((variant, index) => (
-                <SelectItem key={index} value={variant.name || `variant-${index}`} onSelect={() => setDefaultVariant(variant.name)}>
-                  {variant.name || 'Unnamed Variant'}
-                </SelectItem>
+                variant.name ? (
+                  <SelectItem key={index} value={variant.name} onSelect={() => setDefaultVariant(variant.name)}>
+                    {variant.name}
+                  </SelectItem>
+                ) : null
               ))}
             </SelectContent>
           </Select>
